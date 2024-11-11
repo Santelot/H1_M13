@@ -1,0 +1,418 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Playbook</title>
+    <link rel="stylesheet" href="styles.css">
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            line-height: 1.6;
+            margin: 0;
+            padding: 0;
+        }
+        .container {
+            padding: 20px;
+        }
+        .header {
+            background-color: #4CAF50;
+            color: white;
+            padding: 10px;
+            text-align: center;
+        }
+        .banner {
+            background-color: #4CAF50;
+            color: white;
+            padding: 10px;
+            cursor: pointer;
+            margin-bottom: 10px;
+        }
+        .banner .title {
+            font-size: 1.2em;
+            display: flex;
+            justify-content: space-between;
+        }
+        .banner .subtitle {
+            font-size: 1em;
+            margin-top: 5px;
+            border-top: 1px solid white;
+            padding-top: 5px;
+        }
+        .content {
+            display: none;
+            padding: 10px;
+            border: 1px solid #ddd;
+            margin-bottom: 10px;
+        }
+        .step-title {
+            font-weight: bold;
+            color: #333;
+            margin-bottom: 5px;
+            text-align: left;
+        }
+        .dialogue {
+            background-color: #f0f0f0;
+            border: 1px solid #ddd;
+            border-radius: 10px;
+            padding: 10px;
+            margin: 10px 0;
+            text-align: right;
+            font-style: italic;
+        }
+        .dropdown {
+            margin-bottom: 20px;
+        }
+        .dropdown select {
+            font-size: 1em;
+            padding: 5px;
+            margin-left: 10px;
+        }
+        table { width: 100%; border-collapse: collapse; }
+        td { padding: 8px; border: 1px solid #ddd; vertical-align: top; }
+    </style>
+    <script>
+        function updateActivities() {
+            var selectedTime = document.getElementById('time-select').value;
+            var activities = document.getElementsByClassName('activity');
+
+            document.getElementById('selected-time').innerText = "Tiempo efectivo de clase: " + selectedTime + " minutos";
+
+            for (var i = 0; i < activities.length; i++) {
+                activities[i].style.display = 'block';
+            }
+
+            if (selectedTime === '45') {
+                document.getElementById('activity-2').style.display = 'none';
+            } else if (selectedTime === '40') {
+                document.getElementById('activity-2').style.display = 'none';
+                document.getElementById('activity-4').style.display = 'none';
+                document.getElementById('activity-8').style.display = 'none';
+            }
+        }
+
+        function toggleContent(id) {
+            var content = document.getElementById(id);
+            if (content.style.display === "none") {
+                content.style.display = "block";
+            } else {
+                content.style.display = "none";
+            }
+        }
+    </script>
+</head>
+<body>
+
+<div class="header">
+    <h1>Playbook - H1 - M13</h1>
+</div>
+
+<div class="container">
+    <div class="dropdown">
+        <label for="time-select">Tiempo efectivo de Clase:</label>
+        <select id="time-select" onchange="updateActivities()">
+            <option value="50">50 minutos</option>
+            <option value="45">45 minutos</option>
+            <option value="40">40 minutos</option>
+        </select>
+    </div>
+
+    <h2 id="selected-time" class="time-title">Tiempo efectivo de clase: 50 minutos</h2>
+
+<!-- -------------------------------------------------Espacio para Actividades --------------------------------------------------------- -->
+
+<!-- Actividad 1 -->
+<div id="activity-1" class="activity">
+    <div class="banner" onclick="toggleContent('saludo_ritual')">
+        <div class="title">🎉 Actividad 1: Saludo y Ritual Gnius Club ⏰ Tiempo: 2.5 minutos</div>
+        <div class="subtitle">Saludar a los genios y preparar el ambiente para el aprendizaje.</div>
+    </div>
+    <div id="saludo_ritual" class="content">
+        <table>
+            <tr>
+                <td><strong>PASO 1 (0.5 minutos):</strong> Proyectar Diapositiva 2 "Bienvenida".</td>
+                <td><strong>DIÁLOGO SUGERIDO:</strong> "Hola, Genios. Hoy exploraremos cómo combinar diferentes técnicas de prompting y formalizar nuestras ideas para obtener mejores resultados en IA."</td>
+            </tr>
+            <tr>
+                <td><strong>PASO 2 (1 minuto):</strong> Proyectar Diapositiva 3 "¿Cómo Están?".</td>
+                <td><strong>DIÁLOGO SUGERIDO:</strong> "Antes de empezar, quiero saber cómo están hoy. Si se sienten llenos de energía, toquen su hombro izquierdo; si están tranquilos y listos, toquen su hombro derecho."</td>
+            </tr>
+            <tr>
+                <td><strong>PASO 3 (0.5 minutos):</strong> Proyectar Diapositiva 4 "Gracias por Asistir".</td>
+                <td><strong>DIÁLOGO SUGERIDO:</strong> "Ahora, juntemos nuestras manos en agradecimiento por estar aquí, listos para aprender y crear algo increíble. ¡Gracias por asistir, Genios!"</td>
+            </tr>
+            <tr>
+                <td><strong>PASO 4 (0.5 minutos):</strong> Proyectar Diapositiva 5 "Objetivos de la Misión".</td>
+                <td><strong>DIÁLOGO SUGERIDO:</strong> "Hoy trabajaremos para: 1. Integrar múltiples técnicas de prompting en proyectos de IA. 2. Formalizar la estructura de prompts para optimizar resultados en IA. 3. Mejorar la efectividad de los prompts mediante iteración y pruebas."</td>
+            </tr>
+        </table>
+    </div>
+</div>
+
+<!-- Actividad 2 -->
+<div id="activity-2" class="activity">
+    <div class="banner" onclick="toggleContent('innovacion_dia')">
+        <div class="title">🚀 Actividad 2: Innovación del Día ⏰ Tiempo: 3 minutos</div>
+        <div class="subtitle">Explorar nuevas aplicaciones de la IA en tareas específicas.</div>
+    </div>
+    <div id="innovacion_dia" class="content">
+        <table>
+            <tr>
+                <td><strong>PASO 1 (0.5 minutos):</strong> Proyectar Diapositiva 6 "Innovación del Día".</td>
+                <td><strong>DIÁLOGO SUGERIDO:</strong> "Genios, hoy vamos a descubrir cómo la IA puede ayudarnos a mejorar tareas específicas, como la transcripción de reuniones. Les presento Otter.ai, una herramienta que utiliza prompts para personalizar y mejorar la precisión de las transcripciones según el contexto, como el ámbito legal o académico."</td>
+            </tr>
+            <tr>
+                <td><strong>PASO 2 (2 minutos):</strong> Proyectar Diapositiva 7 "Demostración de Otter.ai".</td>
+                <td><strong>DIÁLOGO SUGERIDO:</strong> "Otter.ai utiliza técnicas avanzadas para ajustar las transcripciones según el contexto. Veamos cómo funciona en un breve video. Fíjense cómo la IA adapta los resultados para obtener una mayor precisión según el tipo de conversación."</td>
+            </tr>
+            <tr>
+                <td><strong>PASO 3 (0.5 minutos):</strong> Proyectar Diapositiva 8 "Reflexión sobre Otter.ai".</td>
+                <td><strong>DIÁLOGO SUGERIDO:</strong> "¿Qué les parece? Otter.ai nos muestra cómo la IA puede personalizar su comportamiento para ser más efectiva en diferentes contextos. Esto es útil no solo en el mundo profesional, sino también en cualquier situación en la que necesitemos precisión y eficiencia."</td>
+            </tr>
+        </table>
+    </div>
+</div>
+
+<!-- Actividad 3 -->
+<div id="activity-3" class="activity">
+    <div class="banner" onclick="toggleContent('brain_gym')">
+        <div class="title">🧠 Actividad 3: Brain Gym ⏰ Tiempo: 12 minutos</div>
+        <div class="subtitle">Aprender a crear prompts efectivos para mejorar la interacción con IA.</div>
+    </div>
+    <div id="brain_gym" class="content">
+        <table>
+            <tr>
+                <td><strong>PASO 1 (0.5 minutos):</strong> Proyectar Diapositiva 9 "Introducción".</td>
+                <td><strong>DIÁLOGO SUGERIDO:</strong> "Hoy nos adentraremos en la creación de prompts efectivos para IA. Como ya saben, un prompt es el comando que damos a una IA, y su estructura es crucial para obtener respuestas precisas y útiles. Saber cómo componer un prompt bien definido nos permite guiar a la IA hacia mejores resultados, sin importar si queremos generar contenido, datos o imágenes. Exploraremos cada parte importante de un prompt para ver cómo mejorar su precisión y relevancia."</td>
+            </tr>
+            <tr>
+                <td><strong>PASO 2 (1 minuto):</strong> Proyectar Diapositiva 10 "Partes Clave".</td>
+                <td><strong>DIÁLOGO SUGERIDO:</strong> "Para entender cómo optimizar nuestros prompts, necesitamos conocer sus partes clave. Las partes que componen un prompt son: la directriz, ejemplos, rol o persona, formato de salida, y la información adicional. No todos los prompts requieren cada una de estas partes, pero tener claro cómo funcionan nos ayuda a crear instrucciones más precisas y dirigidas."</td>
+            </tr>
+            <tr>
+                <td><strong>PASO 3 (1 minuto):</strong> Proyectar Diapositiva 11 "La Directriz".</td>
+                <td><strong>DIÁLOGO SUGERIDO:</strong> "La Directriz es la instrucción principal del prompt. Es lo que le dice a la IA qué tarea específica debe realizar. Sin una directriz clara, la IA podría dar una respuesta ambigua o irrelevante. Una directriz efectiva es breve y directa, usando verbos de acción como 'escribe', 'traduce', 'lista'. Por ejemplo, si queremos recomendaciones de libros, podríamos usar una directriz como: 'Dime cinco buenos libros para leer'."</td>
+            </tr>
+            <tr>
+                <td><strong>PASO 4 (1 minuto):</strong> Proyectar Diapositiva 12 "Directrices Implícitas".</td>
+                <td><strong>DIÁLOGO SUGERIDO:</strong> "Las directrices también pueden ser implícitas, lo que significa que no están directamente expresadas pero aún guían a la IA a través del formato o el contexto del prompt. Por ejemplo, si ponemos 'Noche: Noche, Mañana:', la IA sabe que esperamos la palabra 'Morning' en inglés. Estos prompts, aunque no son directos, aún dan una idea clara de lo que buscamos, pero son menos precisos y dependen de que la IA interprete el contexto correctamente."</td>
+            </tr>
+            <tr>
+                <td><strong>PASO 5 (1 minuto):</strong> Proyectar Diapositiva 13 "Ejemplos".</td>
+                <td><strong>DIÁLOGO SUGERIDO:</strong> "Cuando el prompt es más complejo, agregar ejemplos ayuda a guiar a la IA a dar respuestas más precisas. Esta técnica es especialmente útil en 'one-shot' o 'few-shot prompting', donde damos uno o varios ejemplos para que la IA entienda el formato o estilo esperado. Por ejemplo, si queremos traducir frases, podríamos escribir: 'Q: I like apples. A: Me gustan las manzanas. Q: I enjoy walking.' Esto muestra a la IA cómo estructurar la traducción de manera consistente."</td>
+            </tr>
+            <tr>
+                <td><strong>PASO 6 (1 minuto):</strong> Proyectar Diapositiva 14 "Roles".</td>
+                <td><strong>DIÁLOGO SUGERIDO:</strong> "Asignar un rol o persona a la IA en un prompt le da un contexto que le ayuda a adaptar el tono y el contenido de su respuesta. Por ejemplo, si le pedimos a la IA que responda 'como un doctor', esperaremos una respuesta que refleje conocimiento médico. Esto es útil cuando queremos que la IA responda con la perspectiva de un experto en un área, como un agente de servicio al cliente o un profesor."</td>
+            </tr>
+            <tr>
+                <td><strong>PASO 7 (1 minuto):</strong> Proyectar Diapositiva 15 "Formato de Output".</td>
+                <td><strong>DIÁLOGO SUGERIDO:</strong> "El formato de salida le indica a la IA cómo queremos que se presente la respuesta. Esto puede ser en forma de lista, tabla, o párrafo, entre otros. Por ejemplo, si queremos un resumen en formato de tabla, podemos indicarlo claramente para evitar tener que procesar la información después. Esto hace que el resultado sea más fácil de usar y leer."</td>
+            </tr>
+            <tr>
+                <td><strong>PASO 8 (1 minuto):</strong> Proyectar Diapositiva 16 "Instrucciones de Estilo".</td>
+                <td><strong>DIÁLOGO SUGERIDO:</strong> "Además del formato, podemos pedir a la IA que ajuste su estilo o tono. Por ejemplo, si queremos que el texto sea breve y directo, podemos indicarlo. Esto nos permite controlar no solo el contenido, sino también la forma en que se presenta, como si pedimos un tono formal o uno amigable."</td>
+            </tr>
+            <tr>
+                <td><strong>PASO 9 (1 minuto):</strong> Proyectar Diapositiva 17 "Información Adicional".</td>
+                <td><strong>DIÁLOGO SUGERIDO:</strong> "La información adicional proporciona a la IA los datos necesarios para dar una respuesta relevante. Es útil para tareas complejas donde necesitamos incluir detalles específicos, como un historial médico para hacer predicciones de salud. Esto ayuda a que la IA entienda mejor el contexto del prompt."</td>
+            </tr>
+            <tr>
+                <td><strong>PASO 10 (1 minuto):</strong> Proyectar Diapositiva 18 "Orden de las Partes".</td>
+                <td><strong>DIÁLOGO SUGERIDO:</strong> "Aunque no hay un orden único para organizar un prompt, hay formas que ayudan a mejorar la claridad. Generalmente, es recomendable comenzar con ejemplos o contexto, seguido del rol, la directriz, y el formato de salida. Esto permite que la IA procese el contexto antes de ejecutar la tarea específica, enfocándose mejor en el resultado esperado."</td>
+            </tr>
+            <tr>
+                <td><strong>PASO 11 (1.5 minutos):</strong> Proyectar Diapositiva 19 "¿Por qué importa el orden?".</td>
+                <td><strong>DIÁLOGO SUGERIDO:</strong> "¿Alguna vez han escuchado el término 'El orden de los factores no altera el producto'? Curiosamente ese concepto es rara vez cierto fuera del contexto de las matemáticas. Un ejemplo curioso es el caso del plátano y el jugo de naranja. Cuando comes un plátano y luego tomas jugo de naranja, los ácidos naturales del jugo de naranja pueden reaccionar con ciertas enzimas del plátano que ya tienes en la boca y el estómago. Esto a veces provoca que el sabor del plátano se vuelva amargo o agrio, lo cual puede ser bastante extraño. Pero si tomas primero el jugo de naranja y después el plátano, este efecto no es tan fuerte, ¡y el sabor es mucho más normal! Este ejemplo nos habla de la importancia del orden de las cosas en la vida diaria. En prompting, el orden de las partes del prompt influye en cómo la IA procesa la información. Si ponemos la directriz al final, reducimos la probabilidad de que la IA se desvíe, ya que primero interpreta el contexto. Este enfoque ayuda a evitar que la IA continúe desarrollando contexto en lugar de realizar la tarea indicada."</td>
+            </tr>
+            <tr>
+                <td><strong>PASO 12 (0.5 minutos):</strong> Proyectar Diapositiva 20 "Conclusión".</td>
+                <td><strong>DIÁLOGO SUGERIDO:</strong> "Hemos visto que crear un buen prompt es un proceso que requiere práctica y ajustes. Al conocer y aplicar las diferentes partes de un prompt, podemos lograr respuestas más precisas y adaptadas a nuestras necesidades. La experimentación es clave para dominar estas técnicas."</td>
+            </tr>
+            <tr>
+                <td><strong>PASO 13 (0.5 minutos):</strong> Proyectar Diapositiva 21 "Objetivos Alcanzados".</td>
+                <td><strong>DIÁLOGO SUGERIDO:</strong> "Hasta ahora hemos integrado múltiples técnicas de prompting y hemos formalizado cómo estructurar un prompt para obtener mejores resultados. Estos avances son esenciales para seguir desarrollando nuestras habilidades de prompting en la IA."</td>
+            </tr>
+        </table>
+    </div>
+</div>
+
+<!-- Actividad 4 -->
+<div id="activity-4" class="activity">
+    <div class="banner" onclick="toggleContent('state_change')">
+        <div class="title">🧘 Actividad 4: State Change ⏰ Tiempo: 2 minutos</div>
+        <div class="subtitle">Pausa breve para relajarse y concentrarse mejor.</div>
+    </div>
+    <div id="state_change" class="content">
+        <table>
+            <tr>
+                <td><strong>PASO 1 (0.5 minutos):</strong> Proyectar Diapositiva 22 "Meditación Flash".</td>
+                <td><strong>DIÁLOGO SUGERIDO:</strong> "Genios, vamos a hacer una pequeña pausa para calmarnos y enfocarnos. Siéntense cómodamente, cierren los ojos y concéntrense en su respiración."</td>
+            </tr>
+            <tr>
+                <td><strong>PASO 2 (1 minuto):</strong> Proyectar Diapositiva 23 "Cronómetro".</td>
+                <td><strong>DIÁLOGO SUGERIDO:</strong> "N/A"</td>
+            </tr>
+            <tr>
+                <td><strong>PASO 3 (0.5 minutos):</strong> Proyectar Diapositiva 24 "Reflexión sobre Meditación".</td>
+                <td><strong>DIÁLOGO SUGERIDO:</strong> "Excelente, Genios. Esta breve meditación nos ayuda a calmar la mente y a mejorar nuestra claridad mental. Al concentrarnos en nuestra respiración, estamos más preparados para continuar con las siguientes actividades."</td>
+            </tr>
+        </table>
+    </div>
+</div>
+
+<!-- Actividad 5 -->
+<div id="activity-5" class="activity">
+    <div class="banner" onclick="toggleContent('team_gnius')">
+        <div class="title">🤝 Actividad 5: Team Gnius ⏰ Tiempo: 3 minutos</div>
+        <div class="subtitle">Formación de equipos para la actividad en parejas.</div>
+    </div>
+    <div id="team_gnius" class="content">
+        <table>
+            <tr>
+                <td><strong>PASO 1 (0.5 minutos):</strong> Proyectar Diapositiva 25 "Formación de Equipos".</td>
+                <td><strong>DIÁLOGO SUGERIDO:</strong> "Genios, vamos a trabajar en parejas para esta actividad. Busquen un compañero distinto al de la misión anterior."</td>
+            </tr>
+            <tr>
+                <td><strong>PASO 2 (1 minuto):</strong> Proyectar Diapositiva 26 "Cronómetro".</td>
+                <td><strong>DIÁLOGO SUGERIDO:</strong> "N/A"</td>
+            </tr>
+            <tr>
+                <td><strong>PASO 3 (0.5 minutos):</strong> Proyectar Diapositiva 27 "Recoger Tablets".</td>
+                <td><strong>DIÁLOGO SUGERIDO:</strong> "Ahora que están en equipos, necesito que un representante de cada pareja pase al frente a recoger su Magic Tablet."</td>
+            </tr>
+            <tr>
+                <td><strong>PASO 4 (1 minuto):</strong> Proyectar Diapositiva 28 "Cronómetro".</td>
+                <td><strong>DIÁLOGO SUGERIDO:</strong> "N/A"</td>
+            </tr>
+        </table>
+    </div>
+</div>
+
+<!-- Actividad 6 -->
+<div id="activity-6" class="activity">
+    <div class="banner" onclick="toggleContent('challenge')">
+        <div class="title">🏆 Actividad 6: Challenge ⏰ Tiempo: 24 minutos</div>
+        <div class="subtitle">Aplicar conocimientos en la creación de un plan financiero con IA.</div>
+    </div>
+    <div id="challenge" class="content">
+        <table>
+            <tr>
+                <td><strong>PASO 1 (0.5 minutos):</strong> Proyectar Diapositiva 29 "Título e Introducción".</td>
+                <td><strong>DIÁLOGO SUGERIDO:</strong> "Hoy vamos a trabajar en un tema fundamental para la vida adulta: la planeación financiera personal. Desarrollaremos un plan financiero personalizado que se ajuste a nuestras metas. Este ejercicio nos ayudará a comprender cómo administrar nuestro dinero, pensar en el ahorro y explorar estrategias de presupuesto. Además, utilizaremos la IA para orientarnos en esta tarea, lo cual les permitirá experimentar cómo una buena estructura de prompts puede maximizar el poder de la IA y ayudarnos en la vida cotidiana."</td>
+            </tr>
+            <tr>
+                <td><strong>PASO 2 (1 minuto):</strong> Proyectar Diapositiva 30 "Explicación del Desafío".</td>
+                <td><strong>DIÁLOGO SUGERIDO:</strong> "En este desafío, cada uno de ustedes creará un plan financiero personal utilizando la IA como herramienta de apoyo. El plan se basará en la situación financiera de cada uno, usando ejemplos y plantillas que les ayudarán a entender su propio perfil de ingresos y gastos. Nuestra meta es aprender a establecer metas financieras claras y realistas, crear presupuestos efectivos y explorar opciones de ahorro e inversión en el contexto mexicano. Todo esto se hará aplicando una estructura de prompts que guiará a la IA para obtener información relevante y precisa."</td>
+            </tr>
+            <tr>
+                <td><strong>PASO 3 (0.5 minutos):</strong> Proyectar Diapositiva 31 "Etapa 1: Evaluación Financiera".</td>
+                <td><strong>DIÁLOGO SUGERIDO:</strong> "Para empezar, vamos a evaluar nuestra situación financiera actual. Esto incluye calcular sus ingresos mensuales, gastos, ahorros y, si es el caso, deudas. Tienen plantillas y ejemplos de perfiles financieros de otros estudiantes en México que pueden utilizar para guiarse y llenar su propia hoja de datos financieros. Si no tienen datos exactos, pueden basarse en los ejemplos para tener una referencia. Esta información es clave para comprender cuánto dinero tienen disponible cada mes y dónde están sus principales gastos."</td>
+            </tr>
+            <tr>
+                <td><strong>PASO 4 (3 minutos):</strong> Proyectar Diapositiva 32 "Cronómetro".</td>
+                <td><strong>DIÁLOGO SUGERIDO:</strong> "N/A"</td>
+            </tr>
+            <tr>
+                <td><strong>PASO 5 (0.5 minutos):</strong> Proyectar Diapositiva 33 "Etapa 2: Metas Financieras".</td>
+                <td><strong>DIÁLOGO SUGERIDO:</strong> "En la segunda etapa, van a definir metas financieras claras, tanto a corto como a largo plazo. Una meta a corto plazo es aquella que pueden cumplir en un año o menos, como ahorrar para un taller de verano. Una meta a largo plazo podría ser ahorrar para la universidad o un viaje después de la graduación. Para establecer metas efectivas, utilizaremos el criterio SMART: que sean específicas, medibles, alcanzables, relevantes y con un tiempo límite. Esto los ayudará a enfocarse y a hacer un plan concreto para alcanzar sus objetivos."</td>
+            </tr>
+            <tr>
+                <td><strong>PASO 6 (3 minutos):</strong> Proyectar Diapositiva 34 "Cronómetro".</td>
+                <td><strong>DIÁLOGO SUGERIDO:</strong> "N/A"</td>
+            </tr>
+            <tr>
+                <td><strong>PASO 7 (0.5 minutos):</strong> Proyectar Diapositiva 35 "Etapa 3: Prompt para Presupuesto".</td>
+                <td><strong>DIÁLOGO SUGERIDO:</strong> "Ahora, en la tercera etapa, crearán un prompt que le permita a la IA ayudarlos a construir un presupuesto mensual que se ajuste a sus metas financieras. Para estructurar el prompt, indiquen que la IA actúe como un asesor financiero, familiarizado con el contexto mexicano, y que tome en cuenta su información de ingresos, gastos y metas. Esto le ayudará a la IA a darles recomendaciones precisas y realistas. Asegúrense de pedir la respuesta en formato de tabla para que sea fácil de entender, con categorías como ingresos, gastos, ahorro sugerido y balance restante."</td>
+            </tr>
+            <tr>
+                <td><strong>PASO 8 (3 minutos):</strong> Proyectar Diapositiva 36 "Cronómetro".</td>
+                <td><strong>DIÁLOGO SUGERIDO:</strong> "N/A"</td>
+            </tr>
+            <tr>
+                <td><strong>PASO 9 (0.5 minutos):</strong> Proyectar Diapositiva 37 "Etapa 4: Ahorro e Inversión".</td>
+                <td><strong>DIÁLOGO SUGERIDO:</strong> "En esta etapa, exploraremos opciones de ahorro y opciones básicas de inversión en México que sean adecuadas para adolescentes. Con ayuda de la IA, van a diseñar un prompt que les explique los diferentes tipos de cuentas de ahorro y las opciones de inversión básicas como los Cetes. Indiquen que la IA compare estas opciones en una tabla que incluya beneficios, desventajas, tasas de interés y requisitos. Esto les ayudará a elegir la opción que mejor se ajuste a sus necesidades de ahorro."</td>
+            </tr>
+            <tr>
+                <td><strong>PASO 10 (5 minutos):</strong> Proyectar Diapositiva 38 "Cronómetro".</td>
+                <td><strong>DIÁLOGO SUGERIDO:</strong> "N/A"</td>
+            </tr>
+            <tr>
+                <td><strong>PASO 11 (0.5 minutos):</strong> Proyectar Diapositiva 39 "Etapa 5: Plan Financiero Final".</td>
+                <td><strong>DIÁLOGO SUGERIDO:</strong> "En la última etapa, vamos a combinar toda la información obtenida en un plan financiero completo. Usen el presupuesto que crearon con la IA, así como las opciones de ahorro e inversión que consideraron en la etapa anterior, para crear un plan de acción mensual. Establezcan pasos específicos que seguirán cada mes, como destinar una cantidad fija a una cuenta de ahorro. También pueden fijar hitos, por ejemplo, alcanzar cierta cantidad de ahorros después de seis meses. Documenten su plan de manera clara para poder seguirlo."</td>
+            </tr>
+            <tr>
+                <td><strong>PASO 12 (5 minutos):</strong> Proyectar Diapositiva 40 "Cronómetro".</td>
+                <td><strong>DIÁLOGO SUGERIDO:</strong> "N/A"</td>
+            </tr>
+            <tr>
+                <td><strong>PASO 13 (0.5 minutos):</strong> Proyectar Diapositiva 41 "Comparte tus Resultados".</td>
+                <td><strong>DIÁLOGO SUGERIDO:</strong> "Ahora que tienen su plan financiero, júntense con el equipo más cercano y compartan sus resultados. Pueden comparar sus presupuestos y los objetivos de ahorro que establecieron. Esta es una gran oportunidad para ver cómo otros abordaron el reto y aprender de sus estrategias."</td>
+            </tr>
+            <tr>
+                <td><strong>PASO 14 (5 minutos):</strong> Proyectar Diapositiva 42 "Cronómetro".</td>
+                <td><strong>DIÁLOGO SUGERIDO:</strong> "N/A"</td>
+            </tr>
+            <tr>
+                <td><strong>PASO 15 (0.5 minutos):</strong> Proyectar Diapositiva 43 "Objetivos Alcanzados".</td>
+                <td><strong>DIÁLOGO SUGERIDO:</strong> "Excelente trabajo, Genios. Hoy hemos logrado todos nuestros objetivos: integrar múltiples técnicas de prompting, formalizar la estructura de prompts y mejorar la efectividad de estos mediante pruebas e iteración. Además, crearon un plan financiero personalizado, aplicando sus conocimientos en un contexto real."</td>
+            </tr>
+            <tr>
+                <td><strong>PASO 16 (0.5 minutos):</strong> Proyectar Diapositiva 44 "You've Got Mon-e".</td>
+                <td><strong>DIÁLOGO SUGERIDO:</strong> "¡Felicidades, Genios! Todos han trabajado arduamente y han aplicado los conocimientos de forma práctica. Por su dedicación, han ganado Mon-e. Gracias por su esfuerzo en esta misión."</td>
+            </tr>
+        </table>
+    </div>
+</div>
+
+<!-- Actividad 7 -->
+<div id="activity-7" class="activity">
+    <div class="banner" onclick="toggleContent('easter_egg')">
+        <div class="title">🥚 Actividad 7: Easter Egg ⏰ Tiempo: 1.5 minutos</div>
+        <div class="subtitle">Desafío divertido para los Genios atentos.</div>
+    </div>
+    <div id="easter_egg" class="content">
+        <table>
+            <tr>
+                <td><strong>PASO 1 (0.5 minutos):</strong> Proyectar Diapositiva 45 "Easter Egg - Pregunta".</td>
+                <td><strong>DIÁLOGO SUGERIDO:</strong> "Genios, es hora del Easter Egg. La pregunta es: ¿Cuál es el orden correcto para comer un plátano y jugo de naranja para evitar un sabor extraño? Recuerden, solo levanten la mano si saben la respuesta, no la digan en voz alta. Voy a llamar a tres de ustedes para que me digan la respuesta al oído."</td>
+            </tr>
+            <tr>
+                <td><strong>PASO 2 (0.5 minutos):</strong> Proyectar Diapositiva 46 "Pregunta: ¿Cuál es el orden correcto?".</td>
+                <td><strong>DIÁLOGO SUGERIDO:</strong> "Uno, ven y dime la respuesta al oído. Ahora tú, dos. Y finalmente, tres."</td>
+            </tr>
+            <tr>
+                <td><strong>PASO 3 (1 minuto):</strong> Proyectar Diapositiva 47 "Respuesta Correcta".</td>
+                <td><strong>DIÁLOGO SUGERIDO:</strong> "La respuesta correcta es beber el jugo de naranja primero y luego comer el plátano para evitar el sabor extraño. ¡Buen trabajo, Genios! A los ganadores les toca Mon-e."</td>
+            </tr>
+        </table>
+    </div>
+</div>
+
+<!-- Actividad 8 -->
+<div id="activity-8" class="activity">
+    <div class="banner" onclick="toggleContent('honor_dojo')">
+        <div class="title">🎖️ Actividad 8: Honor de Dojo ⏰ Tiempo: 0.5 minutos</div>
+        <div class="subtitle">Recogida y organización del espacio de trabajo.</div>
+    </div>
+    <div id="honor_dojo" class="content">
+        <table>
+            <tr>
+                <td><strong>PASO 1 (0.5 minutos):</strong> Proyectar Diapositiva 48 "Honor de Dojo".</td>
+                <td><strong>DIÁLOGO SUGERIDO:</strong> "Genios, para terminar nuestra misión de hoy, vamos a recoger y ordenar el salón. Cada equipo pase al frente y entréguenme sus Magic Tablets. Gracias por su esfuerzo y dedicación."</td>
+            </tr>
+        </table>
+    </div>
+</div>
+
+
+
+
+
+
+<!-- -------------------------------------------------Espacio para Actividades --------------------------------------------------------- -->
+
+</div>
+
+</body>
+</html>
